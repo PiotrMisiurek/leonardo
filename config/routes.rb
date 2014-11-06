@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   resources :projects
+  resource :project do
+    member do
+      get 'choose'
+    end
+  end
 
   root 'projects#index'
 

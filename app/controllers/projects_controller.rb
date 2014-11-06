@@ -17,6 +17,11 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def choose
+    @project = ProjectChooser.new.choose
+    render text: @project.name
+  end
+
   # GET /projects/1/edit
   def edit
   end
