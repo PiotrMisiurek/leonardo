@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 
 gem 'pickup'
 
-gem 'haml'
+gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password
