@@ -28,10 +28,8 @@
         %a.navbar-brand(href="#") Leonardo
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+            %li= link_to "Projects", projects_path
+            %li= link_to "CHOOSE PROJECT", choose_project_path
 
     .container
       .row
@@ -39,12 +37,5 @@
           = bootstrap_flash
           = yield
         .col-lg-3
-          .well.sidebar-nav
-            %h3 Sidebar
-            %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
       %footer
-        %p &copy; Company 2014
+        %p &copy; Leonardo 2014
