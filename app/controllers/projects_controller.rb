@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
 
   def choose
     @project = ProjectChooser.new(@projects).choose
-    render text: @project.name
   end
 
   def create

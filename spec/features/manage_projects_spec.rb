@@ -33,7 +33,7 @@ feature "manage projects", type: :feature do
   scenario 'choose' do
     project_setup
     click_link 'CHOOSE PROJECT'
-    expect(page.body).to eq('test')
+    expect(page).to have_content('Current project: test')
   end
 
   def project_setup
