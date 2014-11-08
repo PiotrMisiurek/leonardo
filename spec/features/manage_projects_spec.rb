@@ -18,6 +18,7 @@ feature "manage projects", type: :feature do
     click_link 'Edit'
     fill_in_project_form 'updated', 200
     click_button 'Update Project'
+    expect(page).to have_content('Project was successfully updated.')
     expect_to_not_see_project('test', 100)
     expect_to_see_project('updated', 200)
   end
