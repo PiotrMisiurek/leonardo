@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :working_hours, dependent: :destroy
 
   def choice
     { name => weight }
