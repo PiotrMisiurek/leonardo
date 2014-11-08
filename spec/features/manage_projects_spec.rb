@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 feature "manage projects", type: :feature do
-  before(:each) do
-    @user = create(:user)
-    login_as(@user)
-  end
+  let!(:user) { create(:user) }
+  let!(:login_user) { login_as(user) }
 
   scenario 'create' do
     visit '/projects'
@@ -16,7 +14,7 @@ feature "manage projects", type: :feature do
   end
 
   scenario 'update' do
-    project = create(:project, user: @user, name: 'test', weight: 100)
+    project = create(:project, user: user, name: 'test', weight: 100)
     visit '/projects'
     expect_to_see_project('test', 100)
     click_link 'Edit'
