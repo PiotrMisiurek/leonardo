@@ -30,6 +30,12 @@ feature "manage projects", type: :feature do
     expect_to_not_see_project('test', 100)
   end
 
+  scenario 'choose' do
+    project_setup
+    click_link 'CHOOSE PROJECT'
+    expect(page.body).to eq('test')
+  end
+
   def project_setup
     project = create(:project, user: user, name: 'test', weight: 100)
     visit '/projects'
