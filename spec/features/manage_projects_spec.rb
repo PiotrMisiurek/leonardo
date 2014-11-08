@@ -14,14 +14,25 @@ feature "manage projects", type: :feature do
   end
 
   scenario 'update' do
-    project = create(:project, user: user, name: 'test', weight: 100)
-    visit '/projects'
-    expect_to_see_project('test', 100)
+    project_setup
     click_link 'Edit'
     fill_in_project_form 'updated', 200
     click_button 'Update Project'
     expect_to_not_see_project('test', 100)
     expect_to_see_project('updated', 200)
+  end
+
+  scenario 'destroy' do
+    project_setup
+    click_link 'Delete'
+    expect(page).to have_content('Project was successfully destroyed.')
+    expect_to_not_see_project('test', 100)
+  end
+
+  def project_setup
+    project = create(:project, user: user, name: 'test', weight: 100)
+    visit '/projects'
+    expect_to_see_project('test', 100)
   end
 
   def fill_in_project_form(name, weight)
