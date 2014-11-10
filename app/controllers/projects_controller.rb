@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :check_working_hour_in_progress, only: :choose
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_projects, only: [:index, :choose]
 
@@ -33,6 +34,12 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+    def check_working_hour_in_progress
+      if working_hour = current_user.working_hours.in_progress.first
+        redirect_to projects_url, notice: "You can not choose new project. #{working_hour.project.name} project is in progress"
+      end
+    end
 
     def set_project
       @project = current_user.projects.find(params[:id])

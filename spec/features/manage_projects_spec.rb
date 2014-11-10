@@ -36,6 +36,14 @@ feature "manage projects", type: :feature do
     expect(page).to have_content('Current project: test')
   end
 
+  scenario 'can not choose twice in a row' do
+    project_setup
+    click_link 'CHOOSE PROJECT'
+    expect(page).to have_content('Current project: test')
+    click_link 'CHOOSE PROJECT'
+    expect(page).to have_content('You can not choose new project. test project is in progress')
+  end
+
   def project_setup
     project = create(:project, user: user, name: 'test', weight: 100)
     visit '/projects'
