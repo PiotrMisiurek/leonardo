@@ -44,8 +44,15 @@ feature "manage projects", type: :feature do
     expect(page).to have_content('You can not choose new project. test project is in progress')
   end
 
+  scenario 'can choose again after one hour' do
+    project_setup
+    create(:working_hour, project: @project, created_at: 61.minutes.ago)
+    click_link 'CHOOSE PROJECT'
+    expect(page).to have_content('Current project: test')
+  end
+
   def project_setup
-    project = create(:project, user: user, name: 'test', weight: 100)
+    @project = create(:project, user: user, name: 'test', weight: 100)
     visit '/projects'
     expect_to_see_project('test', 100)
   end

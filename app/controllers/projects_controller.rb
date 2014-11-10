@@ -37,7 +37,11 @@ class ProjectsController < ApplicationController
 
     def check_working_hour_in_progress
       if working_hour = current_user.working_hours.in_progress.first
-        redirect_to projects_url, notice: "You can not choose new project. #{working_hour.project.name} project is in progress"
+        if working_hour.should_be_done?
+          working_hour.update_attribute :done, true
+        else
+          redirect_to projects_url, notice: "You can not choose new project. #{working_hour.project.name} project is in progress"
+        end
       end
     end
 
