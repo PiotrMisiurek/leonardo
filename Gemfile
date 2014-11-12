@@ -31,7 +31,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 
-gem 'simple_form'
+gem 'simple_form', '~> 3.1.0.rc1'
 
 group :development do
   gem 'spring'
