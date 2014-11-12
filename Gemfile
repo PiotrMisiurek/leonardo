@@ -31,6 +31,8 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 
+gem 'simple_form'
+
 group :development do
   gem 'spring'
   gem 'better_errors'
