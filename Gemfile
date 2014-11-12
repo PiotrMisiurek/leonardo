@@ -23,12 +23,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-group :development do
-  gem 'spring'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
 gem 'pickup'
 
 gem 'haml-rails'
@@ -36,6 +30,12 @@ gem 'twitter-bootstrap-rails'
 
 gem 'devise'
 gem 'devise-bootstrap-views'
+
+group :development do
+  gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
