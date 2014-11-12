@@ -11,6 +11,12 @@
   %br
   = @project.weight
 
+%h2 Tasks
+%ul
+  - @project.tasks.each do |task|
+    %li= task.name
+%p
+  = link_to 'Add new task', new_project_task_path(project_id: @project), class: 'btn btn-default'
 
 = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(@project), :class => 'btn btn-default'

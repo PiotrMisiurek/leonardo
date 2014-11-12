@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :projects
+  resources :projects do
+    resources :tasks
+  end
   resource :project do
     member do
       get 'choose'
