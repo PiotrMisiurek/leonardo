@@ -8,8 +8,6 @@ class Project < ActiveRecord::Base
   end
 
   def self.choice
-    choice = {}
-    self.all.each {|project| choice.merge!(project.choice) }
-    choice
+    Project.all.inject({}) { |choice, project| choice.merge(project.choice) }
   end
 end
