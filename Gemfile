@@ -44,6 +44,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'capybara-webkit'
   gem 'guard-rspec', require: false
+  gem 'dotenv-rails'
 end
 
 
