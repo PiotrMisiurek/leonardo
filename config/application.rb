@@ -28,5 +28,7 @@ module Leonardo
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/services)
+
+    config.action_mailer.default_url_options = { host: ENV['APP_HOST'] }
   end
 end
