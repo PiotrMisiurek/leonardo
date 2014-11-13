@@ -8,4 +8,14 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def is_working?
+    working_hours.in_progress.present?
+  end
+
+  def current_working_hour
+    if is_working?
+      working_hours.in_progress.first
+    end
+  end
 end

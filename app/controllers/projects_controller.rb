@@ -36,7 +36,8 @@ class ProjectsController < ApplicationController
   private
 
     def check_working_hour_in_progress
-      if working_hour = current_user.working_hours.in_progress.first
+      if current_user.is_working?
+        working_hour = current_user.current_working_hour
         if working_hour.should_be_done?
           working_hour.update_attribute :done, true
         else
