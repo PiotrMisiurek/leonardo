@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   before_create :set_current_weight
 
   def choice
-    { name => weight }
+    { name => current_weight }
   end
 
   def self.choice
