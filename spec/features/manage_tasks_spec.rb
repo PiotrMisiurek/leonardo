@@ -12,21 +12,21 @@ feature 'manage tasks', type: :feature do
     fill_in 'Name', with: 'Sample of example'
     click_button 'Create Task'
     expect(page).to have_content(project.name)
-    expect(page).to have_content('Task was successfully created')
+    expect_to_see_notice('Task was successfully created')
     expect(page).to have_content('Sample of example')
   end
 
   scenario 'update aka mark as done' do
     visit_project_page_with_task
     click_link 'Mark As Done'
-    expect(page).to have_text('Task was successfully marked as done')
+    expect_to_see_notice('Task was successfully marked as done')
     expect_to_not_see_task
   end
 
   scenario 'remove' do
     visit_project_page_with_task
     click_link 'Remove'
-    expect(find('.alert')).to have_text('Task was successfully removed')
+    expect_to_see_notice('Task was successfully removed')
     expect_to_not_see_task
   end
 

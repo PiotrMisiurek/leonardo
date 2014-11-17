@@ -9,7 +9,7 @@ feature "manage projects", type: :feature do
     click_link 'New'
     fill_in_project_form 'test', 100
     click_button 'Create Project'
-    expect(page).to have_content('Project was successfully created.')
+    expect_to_see_notice('Project was successfully created.')
     expect_to_see_project('test', 100)
   end
 
@@ -18,7 +18,7 @@ feature "manage projects", type: :feature do
     click_link 'Edit'
     fill_in_project_form 'updated', 200
     click_button 'Update Project'
-    expect(page).to have_content('Project was successfully updated.')
+    expect_to_see_notice('Project was successfully updated.')
     expect_to_not_see_project('test', 100)
     expect_to_see_project('updated', 200)
   end
@@ -26,7 +26,7 @@ feature "manage projects", type: :feature do
   scenario 'destroy' do
     project_setup
     click_link 'Delete'
-    expect(page).to have_content('Project was successfully destroyed.')
+    expect_to_see_notice('Project was successfully destroyed.')
     expect_to_not_see_project('test', 100)
   end
 
