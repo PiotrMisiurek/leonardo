@@ -55,6 +55,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-      params.require(:project).permit(:name, :weight)
+      params.require(:project).permit(:name, :weight, :once_a_day)
     end
 end

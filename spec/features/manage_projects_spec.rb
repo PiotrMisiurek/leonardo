@@ -60,6 +60,7 @@ feature "manage projects", type: :feature do
   def fill_in_project_form(name, weight)
     fill_in 'Name', with: name
     fill_in 'Weight', with: weight
+    check 'Once a day'
   end
 
   def expect_to_see_project(name, weight)
