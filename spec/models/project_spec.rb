@@ -10,4 +10,10 @@ describe Project do
     it { is_expected.to include(project_2.choice) }
   end
 
+  describe 'current weight' do
+    let(:project) { create(:project) }
+    subject { project.current_weight }
+    it { is_expected.to eq(project.weight) }
+  end
+
 end
