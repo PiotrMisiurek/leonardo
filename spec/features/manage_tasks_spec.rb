@@ -17,12 +17,27 @@ feature 'manage tasks', type: :feature do
   end
 
   scenario 'update aka mark as done' do
-    task = create(:task, project: project)
-    visit projects_path
-    click_link project.name
-    expect(page).to have_text(task.name)
+    visit_project_page_with_task
     click_link 'Mark As Done'
     expect(page).to have_text('Task was successfully marked as done')
-    expect(page).to_not have_text(task.name)
+    expect_to_not_see_task
+  end
+
+  scenario 'remove' do
+    visit_project_page_with_task
+    click_link 'Remove'
+    expect(find('.alert')).to have_text('Task was successfully removed')
+    expect_to_not_see_task
+  end
+
+  def visit_project_page_with_task
+    @task = create(:task, project: project)
+    visit projects_path
+    click_link project.name
+    expect(find('li h4')).to have_text(@task.name)
+  end
+
+  def expect_to_not_see_task
+    expect(page).to_not have_selector('li h4')
   end
 end

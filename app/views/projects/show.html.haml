@@ -22,7 +22,7 @@
         %li
           %h4= task.name
         %li= link_to 'Mark As Done', project_task_path(project_id: @project, id: task), method: :put, class: 'btn btn-default'
-        %li= link_to 'Remove', '#', class: 'btn btn-danger'
+        %li= link_to 'Remove', project_task_path(project_id: @project, id: task), method: :delete, class: 'btn btn-danger'
 
 = link_to t('.back', :default => t("helpers.links.back")), projects_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_project_path(@project), :class => 'btn btn-default'

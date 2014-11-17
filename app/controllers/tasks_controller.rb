@@ -20,6 +20,11 @@ class TasksController < ApplicationController
     redirect_to @project, notice: 'Task was successfully marked as done.'
   end
 
+  def destroy
+    @task.destroy
+    redirect_to @project, notice: 'Task was successfully removed'
+  end
+
   private
 
   def set_task
