@@ -33,6 +33,8 @@ gem 'devise-bootstrap-views'
 
 gem 'simple_form', '~> 3.1.0.rc1'
 
+gem 'sidekiq'
+
 group :development do
   gem 'spring'
   gem 'better_errors'
