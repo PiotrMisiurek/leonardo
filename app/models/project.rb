@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :working_hours, dependent: :destroy
   has_many :tasks, dependent: :destroy
 
-  before_create :set_current_weight
+  before_save :set_current_weight
 
   def choice
     { name => current_weight }
@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
   private
 
   def set_current_weight
-    self.current_weight = self.weight
+    if self.weight_changed?
+      self.current_weight = self.weight
+    end
   end
 end
