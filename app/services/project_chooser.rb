@@ -19,7 +19,12 @@ class ProjectChooser
     # TO DO: get the one direct from db
     pickup = Pickup.new(@choice)
     project_name = pickup.pick(1)
-    @project = @projects.find_by_name(project_name)
+    @projects.each do |project|
+      if project.name == project_name
+        @project = project
+        break
+      end
+    end
   end
 
   def create_working_hour
