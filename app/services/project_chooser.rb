@@ -7,7 +7,9 @@ class ProjectChooser
 
   def choose
     pickup_project
+    return unless @project
     create_working_hour
+    handle_once_a_day_project
     @project
   end
 
@@ -22,6 +24,12 @@ class ProjectChooser
 
   def create_working_hour
     WorkingHour.create(project: @project)
+  end
+
+  def handle_once_a_day_project
+    if @project.once_a_day?
+      @project.update_attributes current_weight: 0
+    end
   end
 
 end

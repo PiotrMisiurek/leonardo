@@ -7,5 +7,10 @@ FactoryGirl.define do
   factory :project do
     name
     weight 100
+    user
+  end
+
+  factory :once_a_day_project, parent: :project do
+    once_a_day true
   end
 end
