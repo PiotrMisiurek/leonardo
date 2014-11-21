@@ -33,7 +33,7 @@ class ProjectChooser
 
   def handle_once_a_day_project
     if @project.once_a_day?
-      @project.update_attributes current_weight: 0
+      @project.update_attribute :current_weight, 0
     end
   end
 
